@@ -1,1 +1,88 @@
-<p>myprofile works!</p>
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-view-tab" data-bs-toggle="tab" data-bs-target="#nav-view" type="button" role="tab" aria-controls="nav-view" aria-selected="true">View</button>
+      <button class="nav-link" id="nav-edit-tab" data-bs-toggle="tab" data-bs-target="#nav-edit" type="button" role="tab" aria-controls="nav-edit" aria-selected="false" (click)="resetStatus()">Edit</button>
+    </div>
+</nav>
+
+  
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-view" role="tabpanel" aria-labelledby="nav-view-tab"> <br>
+        
+        <table border="1">
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Id :</td>
+                <td>{{appUser?.id}}</td>
+            </tr>
+            <tr>
+                <td>First Name :</td>
+                <td>{{appUser?.firstName}}</td>
+            </tr>
+            <tr>
+                <td> Last Name :</td>
+                <td>{{appUser?.lastName}}</td>
+            </tr>
+            <tr>
+                <td>Mobile Number :</td>
+                <td>{{appUser?.mobileNumber}}</td>
+            </tr>
+            <tr>
+                <td> Email :</td>
+                <td>{{appUser?.email}}</td>
+            </tr>            
+            <tr>
+                <td>Password :</td>1
+                <td>{{appUser?.password}}</td>
+            </tr>
+            <tr>
+                <td>Role :</td>
+                <td>{{appUser?.role}}</td>
+            </tr>
+            
+        </table>
+    </div>
+
+    <div class="tab-pane fade" id="nav-edit" role="tabpanel" aria-labelledby="nav-edit-tab">
+        <h1>{{message}}</h1>
+        <form  [formGroup]="user" (ngSubmit)="save()" *ngIf="status == false">     
+            <div class="form-group">
+                <label for="firstName">First Name : </label>
+                <input type="text" formControlName="firstName" id="firstName" class="form-control">
+                <div *ngIf="firstName?.touched && firstName?.invalid" class="alert alert-danger">
+                    Please Fill Your First Name
+                </div>
+        
+                <label for="lastName">Last Name : </label>
+                <input type="text" formControlName="lastName" id="lastName" class="form-control">
+                <div *ngIf="lastName?.touched && lastName?.invalid" class="alert alert-danger">
+                    Please Fill Your Last Name
+                </div>
+                
+                <label for="mobileNumber">Mobile Number : </label>
+                <input type="text" formControlName="mobileNumber" id="mobileNumber" class="form-control">
+                <div *ngIf="mobileNumber?.touched && mobileNumber?.invalid" class="alert alert-danger">
+                    Please Fill Your Contact Number
+                </div>
+                
+                <label for="email">Email : </label>
+                <input type="text" formControlName="email" id="email" class="form-control">
+                <div *ngIf="email?.touched && email?.invalid" class="alert alert-danger">
+                    Please Fill Your Email
+                </div>
+              
+                <label for="role">User Type : </label>&nbsp;
+                Owner&nbsp;<input type="radio" formControlName="role" id="role" class="form-check-input" value="owner"> &nbsp;&nbsp;
+                Customer&nbsp;<input type="radio" formControlName="role" id="role" class="form-check-input" value="customer">
+                <div *ngIf="role?.touched && role?.invalid" class="alert alert-danger">
+                    Select Role
+                </div>
+                <br>
+                <input type="submit"  id="submit" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+  </div>

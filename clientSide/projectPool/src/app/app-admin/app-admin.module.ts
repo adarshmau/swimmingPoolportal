@@ -9,6 +9,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { LogoutComponent } from './logout/logout.component';
     ForgotpasswordComponent,
     MyprofileComponent,
     ChangepasswordComponent,
-    LogoutComponent
+    LogoutComponent,
+    ResetpasswordComponent
   ],
   imports: [
     CommonModule,

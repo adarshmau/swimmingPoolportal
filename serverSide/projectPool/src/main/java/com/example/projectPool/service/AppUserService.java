@@ -64,5 +64,17 @@ public class AppUserService {
 		return appUserRepository.findByEmailAndPassword(loginDTO.getUsername(), loginDTO.getPassword());
 	}
 	
+	public String resetPassword(String email , String activationCode , String password)
+	{
+		String message = "Activation Code is wrong " ;
+		AppUser appUser = appUserRepository.findByEmail(email);
+		if(appUser.getActivationCode().equals(activationCode))
+		{
+			appUser.setPassword(password);
+			appUserRepository.save(appUser);
+			message = "Password Changed SuccessFully" ;
+		}
+		return message ;
+	}
 	
 }
