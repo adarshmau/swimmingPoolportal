@@ -5,5 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.example.projectPool.entity.AppUser;
 
 public interface AppUserRepository extends CrudRepository<AppUser, Integer> {
-
+	
+	public AppUser findByEmail(String email) ;
+	
 }

@@ -27,3 +27,13 @@ public class AppUser {
 	private int status = 0 ; 
 	
 }
+/*	
+	{
+		"firstName":"Lovish",
+		"lastName" : "Singh",
+		"mobileNumber" : 9876,
+		"email" : "singhlovish803@gmail.com",
+		"password" : "abcd",
+		"role" : "owner"
+	}
+*/
