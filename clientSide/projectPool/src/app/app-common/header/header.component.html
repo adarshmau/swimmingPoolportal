@@ -7,13 +7,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto"> 
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/signup" >Signup</a>
+                    <a class="nav-link" routerLink="/signup" *ngIf="!isLoggedIn()">Signup</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/login" >LogIn</a>
+                    <a class="nav-link" routerLink="/login" *ngIf="!isLoggedIn()">LogIn</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/forgotpassword">Forgot Password</a>
+                    <a class="nav-link" routerLink="/forgotpassword" *ngIf="!isLoggedIn()" >Forgot Password</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/myprofile" *ngIf="isLoggedIn()" >My Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/changepassword" *ngIf="isLoggedIn()" >Change Password</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/logout" *ngIf="isLoggedIn()" >Logout</a>
                 </li>
                 </ul>
             </div>

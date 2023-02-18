@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  isLoggedIn()
+  {
+    var status = false ;
+    var username = sessionStorage.getItem('username');
+    if(username)
+    {
+        status = true ;
+    }
+    return status ;
+  }
+
 }

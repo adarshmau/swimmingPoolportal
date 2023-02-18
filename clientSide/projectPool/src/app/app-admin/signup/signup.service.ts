@@ -13,5 +13,4 @@ export class SignupService {
   {
     return this.httpClient.post<any>(this.url,signupForm.value) ;
   }
-
 }

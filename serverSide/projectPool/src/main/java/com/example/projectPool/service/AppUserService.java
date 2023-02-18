@@ -3,6 +3,7 @@ package com.example.projectPool.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.projectPool.dto.LoginDTO;
 import com.example.projectPool.entity.AppUser;
 import com.example.projectPool.entity.Customer;
 import com.example.projectPool.entity.Owner;
@@ -27,11 +28,11 @@ public class AppUserService {
 	{
 		appUserRepository.save(appUser) ;
 		
-		String activationCode = mailService.sendEmailToVerify(appUser.getEmail()) ;				
-		appUser.setActivationCode(activationCode);
-		appUserRepository.save(appUser) ;
+//		String activationCode = mailService.sendEmailToVerify(appUser.getEmail()) ;				
+//		appUser.setActivationCode(activationCode);
+//		appUserRepository.save(appUser) ;
 		
-//		appUser.setStatus(1);
+		appUser.setStatus(1);
 		
 		if(appUser.getRole().equals("customer"))
 		{
@@ -58,6 +59,10 @@ public class AppUserService {
 		return appUserRepository.save(appUser);
 	}
 	
+	public AppUser login(LoginDTO loginDTO)
+	{
+		return appUserRepository.findByEmailAndPassword(loginDTO.getUsername(), loginDTO.getPassword());
+	}
 	
 	
 }

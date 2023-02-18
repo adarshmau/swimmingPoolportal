@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +10,10 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 export class LoginComponent {
 
   login : FormGroup ;
+  status : boolean = false ;
+  message : string ="" ;
 
-  constructor(private formBuilder : FormBuilder)
+  constructor(private formBuilder : FormBuilder, private service : LoginService)
   {
     this.login = formBuilder.group(
                                     {
@@ -27,5 +30,20 @@ export class LoginComponent {
   get password()
   {
     return this.login.get('password');
+  }
+
+  save()
+  {
+//    console.log(this.login);
+      this.service.doLogin(this.login).subscribe( 
+                                              r1 => {
+                                                        this.message = r1.status ;
+                                                        if(r1.status == "Login Success")
+                                                        {
+                                                          sessionStorage.setItem('role',r1.role) ;
+                                                          sessionStorage.setItem('username',r1.username) ;
+                                                          this.status = true ;
+                                                        }                                                       
+                                                    });
   }
 }

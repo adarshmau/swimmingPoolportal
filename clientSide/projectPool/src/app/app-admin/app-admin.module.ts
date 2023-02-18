@@ -6,13 +6,19 @@ import { AppAdminRoutingModule } from './app-admin-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { MyprofileComponent } from './myprofile/myprofile.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     SignupComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    MyprofileComponent,
+    ChangepasswordComponent,
+    LogoutComponent
   ],
   imports: [
     CommonModule,
