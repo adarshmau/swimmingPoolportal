@@ -16,13 +16,31 @@
                     <a class="nav-link" routerLink="/forgotpassword" *ngIf="!isLoggedIn()" >Forgot Password</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/myprofile" *ngIf="isLoggedIn()" >My Profile</a>
+                    <a class="nav-link" routerLink="/searchsp" *ngIf="isCustomer()">Search SP</a>
+                </li>                
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/booksp" *ngIf="isCustomer()" >Book SP</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/changepassword" *ngIf="isLoggedIn()" >Change Password</a>
+                    <a class="nav-link" routerLink="/mybookings" *ngIf="isCustomer()" >My Bookings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/logout" *ngIf="isLoggedIn()" >Logout</a>
+                    <a class="nav-link" routerLink="/addsp" *ngIf="isOwner()" >Add SP</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/listsp" *ngIf="isOwner()" >List SP</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/listallbookings" *ngIf="isOwner()" >List All Bookings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/myprofile" *ngIf="isLoggedIn()">My Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/changepassword" *ngIf="isLoggedIn()">Change Password</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/logout" *ngIf="isLoggedIn()">Logout</a>
                 </li>
                 </ul>
             </div>

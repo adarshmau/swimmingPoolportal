@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class LogoutComponent {
 
+  ngOnInit()
+  {
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('role');
+  }
 }

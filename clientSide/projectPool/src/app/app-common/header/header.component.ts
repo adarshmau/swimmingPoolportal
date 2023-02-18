@@ -18,4 +18,16 @@ export class HeaderComponent {
     return status ;
   }
 
+  isCustomer()
+  {
+    var role = sessionStorage.getItem('role');
+    return role == "customer" ;
+  }
+
+  isOwner()
+  {
+    var role = sessionStorage.getItem('role');
+    return role == "owner";
+  }
+
 }

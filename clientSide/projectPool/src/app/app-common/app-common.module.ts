@@ -5,6 +5,8 @@ import { AppCommonRoutingModule } from './app-common-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppAdminModule } from '../app-admin/app-admin.module';
+import { AppOwnerModule } from '../app-owner/app-owner.module';
+import { AppCustomerModule } from '../app-customer/app-customer.module';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { AppAdminModule } from '../app-admin/app-admin.module';
     CommonModule,
     AppCommonRoutingModule,
     AppAdminModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppOwnerModule,
+    AppCustomerModule
   ],
   exports:[
     HeaderComponent,

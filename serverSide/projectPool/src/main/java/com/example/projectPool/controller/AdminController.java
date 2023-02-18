@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.projectPool.dto.ChangePasswordDTO;
 import com.example.projectPool.dto.LoginDTO;
 import com.example.projectPool.entity.AppUser;
 import com.example.projectPool.service.AppUserService;
@@ -39,4 +40,21 @@ public class AdminController {
 		}
 		return ResponseEntity.ok(loginDTO);
 	}
+	
+	@PostMapping("changePassword")
+	public ResponseEntity<ChangePasswordDTO> changePassword(@RequestBody ChangePasswordDTO changePasswordDTO)
+	{
+		AppUser appUser = appUserService.findByEmail(changePasswordDTO.getEmail()) ;
+		changePasswordDTO.setMessage("Password incorrect ");
+		changePasswordDTO.setStatus(false);
+		
+		if(appUser.getPassword().equals(changePasswordDTO.getOldPassword()))
+		{
+			appUser.setPassword(changePasswordDTO.getNewPassword());
+			appUserService.update(appUser);
+			changePasswordDTO.setMessage("Password Changed SuccessFully");
+			changePasswordDTO.setStatus(true);
+		}		
+		return ResponseEntity.ok(changePasswordDTO);
+	}	
 }
