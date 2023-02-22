@@ -24,6 +24,6 @@ public class Owner {
 	@OneToOne
 	private AppUser appUser ;
 	
-	@OneToMany
-	Set<SwimmingPool> swimmingPool = new HashSet<>() ;
+	@OneToMany(mappedBy = "owner")
+	private Set<SwimmingPool> swimmingPool = new HashSet<>() ;
 }

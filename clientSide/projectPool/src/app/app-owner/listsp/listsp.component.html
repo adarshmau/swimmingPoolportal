@@ -1,1 +1,24 @@
-<p>listsp works!</p>
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Plot No</th>
+        <th>Street Name</th>
+        <th>Area Name</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
+        <th>Pin Code</th>
+    </tr>
+
+   <tr *ngFor="let sp of swimmingPools" >
+    <td>{{sp.title}}</td>
+    <td>{{sp.plotNo}}</td>
+    <td>{{sp.streetName}}</td>
+    <td>{{sp.areaName}}</td>
+    <td>{{sp.city}}</td>
+    <td>{{sp.state}}</td>
+    <td>{{sp.country}}</td>
+    <td>{{sp.pinCode}}</td>
+   </tr>
+</table>
+

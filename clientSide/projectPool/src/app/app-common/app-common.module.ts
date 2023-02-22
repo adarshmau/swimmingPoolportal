@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AppAdminModule } from '../app-admin/app-admin.module';
 import { AppOwnerModule } from '../app-owner/app-owner.module';
 import { AppCustomerModule } from '../app-customer/app-customer.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AppCustomerModule } from '../app-customer/app-customer.module';
     AppAdminModule,
     ReactiveFormsModule,
     AppOwnerModule,
-    AppCustomerModule
+    AppCustomerModule,
+    HttpClientModule
   ],
   exports:[
     HeaderComponent,
