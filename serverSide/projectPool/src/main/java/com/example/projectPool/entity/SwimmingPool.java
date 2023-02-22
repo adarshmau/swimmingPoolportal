@@ -3,6 +3,8 @@ package com.example.projectPool.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +22,7 @@ public class SwimmingPool {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer id ;
+	private String username ;
 	private String title ;
 	private String plotNo ;
 	private String streetName ;
@@ -30,6 +33,7 @@ public class SwimmingPool {
 	private int pinCode ;
 	
 	@ManyToOne
+	@JsonIgnore
 	private Owner owner ;
 	
 	@OneToMany(mappedBy = "swimmingPool")

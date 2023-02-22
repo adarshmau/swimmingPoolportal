@@ -13,9 +13,11 @@ export class AddspComponent {
   status : boolean = false ;
   message : string = "";
 
+
   constructor(private service : AddspService, private formBuilder : FormBuilder)
   {
     this.swimmingPool = formBuilder.group({
+                                                username : new FormControl() ,
                                                 title : new FormControl('', Validators.required) ,
                                                 plotNo : new FormControl('', Validators.required) ,
                                                 streetName : new FormControl('', Validators.required) ,
@@ -27,7 +29,6 @@ export class AddspComponent {
                                           });
   }
 
-
   save()
   {
     if(this.swimmingPool.invalid)
@@ -35,14 +36,12 @@ export class AddspComponent {
       this.swimmingPool.markAllAsTouched();
       return ;
     }
-
-    console.log(this.swimmingPool.value) ;
-
+    this.swimmingPool.value.username = sessionStorage.getItem('username');
+    console.log(this.swimmingPool.value.username);
     this.service.addSp(this.swimmingPool).subscribe( r1 => { 
                                                                 this.status = true ;
                                                                 this.message = "Swimming Pool data saved Successfully" ;
                                                             }) ;
-
   }
   get title()
   {

@@ -41,5 +41,15 @@ public class ProjectPoolApplication implements CommandLineRunner {
 		appUser2.setMobileNumber(65656445L);
 		appUser2.setStatus(1);
 		appUserService.save(appUser2) ;
+
+		AppUser appUser3 = new AppUser();
+		appUser3.setFirstName("Ahu");
+		appUser3.setLastName("jan");
+		appUser3.setEmail("a@a.com");
+		appUser3.setPassword("123");
+		appUser3.setRole("owner");
+		appUser3.setMobileNumber(656445L);
+		appUser3.setStatus(1);
+		appUserService.save(appUser3) ;
 	}
 }

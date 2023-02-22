@@ -12,7 +12,16 @@ export class ListspService {
 
   list()
   {
-    return this.httpClient.get<any>(this.url) ;
+    return this.httpClient.get<any>(this.url+'/list') ;
   }
 
+  findPool(id : any)
+  {
+    return this.httpClient.get<any>(this.url+'/findPool/'+id) ; 
+  }
+
+  save(pool : any)
+  {
+    return this.httpClient.post<any>(this.url+'/update', pool.value) ;
+  }
 }
