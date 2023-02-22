@@ -69,10 +69,17 @@ public class AdminController {
 	
 	@PostMapping("forgotPassword")
 	public ResponseEntity<ForgotPasswordDTO> forgotPassword(@RequestBody ForgotPasswordDTO forgotPasswordDTO) throws Exception
-	{
-		
+	{		
 		String activationCode = mailService.forgotPasswordLink(forgotPasswordDTO.getEmail()) ;
-		AppUser appUser = appUserService.findByEmail(forgotPasswordDTO.getEmail());
+		AppUser appUser = appUserService.findByEmail(forgotPasswordDTO.getEmail()) ;
+		
+		if(appUser == null)
+		{
+			forgotPasswordDTO.setMessage("Email does'nt exist");
+			forgotPasswordDTO.setStatus(false);
+			return ResponseEntity.ok(forgotPasswordDTO) ;
+		}
+		
 		appUser.setActivationCode(activationCode);
 		appUserService.update(appUser);
 		
