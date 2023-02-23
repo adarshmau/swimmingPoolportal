@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppCustomerRoutingModule } from './app-customer-routing.module';
 import { SearchspComponent } from './searchsp/searchsp.component';
@@ -15,7 +16,9 @@ import { MybookingsComponent } from './mybookings/mybookings.component';
   ],
   imports: [
     CommonModule,
-    AppCustomerRoutingModule
+    AppCustomerRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AppCustomerModule { }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.projectPool.dto.SwimmingPoolDTO;
 import com.example.projectPool.entity.SwimmingPool;
 import com.example.projectPool.service.SwimmingPoolService;
 
@@ -48,8 +49,8 @@ public class SwimmingPoolController {
 	}
 	
 	@GetMapping("findPoolByName/{name}")
-	public ResponseEntity<SwimmingPool> findPoolByName(@PathVariable String name)
+	public ResponseEntity<SwimmingPoolDTO> findPoolByName(@PathVariable String name)
 	{
-		return ResponseEntity.ok(swimmingPoolService.findByTitle(name)) ;
+		return ResponseEntity.ok(swimmingPoolService.findAllByTitle(name)) ;
 	}
 }
