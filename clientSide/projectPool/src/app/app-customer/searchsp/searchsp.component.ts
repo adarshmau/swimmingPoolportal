@@ -19,6 +19,7 @@ export class SearchspComponent {
 
   basicSearchFormStatus : boolean = false;
   basicTableshow : boolean = false;
+  advanceTableshow : boolean = false;
 
   advancedSearch : FormGroup ;
   statusAdvanced : boolean = false ;
@@ -32,9 +33,9 @@ export class SearchspComponent {
       name : new FormControl('', Validators.required)
     });
     this.advancedSearch = formBuilder.group({
-      city : new FormControl(),
-      state : new FormControl(),
-      country : new FormControl() 
+      city : new FormControl(''),
+      state : new FormControl(''),
+      country : new FormControl('') 
   });
   }
 
@@ -66,11 +67,18 @@ export class SearchspComponent {
   {
     this.basicSearchFormStatus = true;
     this.advancedSearchFormStatus = false ;
+    // this.advanceTableshow = false;
+    this.statusAdvanced = false;
   }
 
   toShowBasicTable()
   {
     this.basicTableshow = true;
+  }
+
+  toShowAdvanceTable()
+  {
+    this.advanceTableshow = true;
   }
   searchAdvanced()
   { 
