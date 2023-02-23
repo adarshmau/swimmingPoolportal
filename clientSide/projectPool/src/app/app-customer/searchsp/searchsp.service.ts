@@ -14,5 +14,9 @@ export class SearchspService {
   {
     return this.httpClient.get<any>(this.url + '/findPoolByName/' + name);
   }
+  searchAdvanced(search : any)
+  {
+    return this.httpClient.post<any>(this.url+'/advancedSearch', search.value) ;
+  }
   
 }

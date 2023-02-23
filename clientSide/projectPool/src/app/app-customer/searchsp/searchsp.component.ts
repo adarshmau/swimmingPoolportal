@@ -17,11 +17,25 @@ export class SearchspComponent {
 
   status : boolean = false;
 
-  constructor(private service : SearchspService, private fromBuilder : FormBuilder)
+  basicSearchFormStatus : boolean = false;
+  basicTableshow : boolean = false;
+
+  advancedSearch : FormGroup ;
+  statusAdvanced : boolean = false ;
+  messageAdvanced : string = "" ;
+  advancedSearchResults : any ;
+  advancedSearchFormStatus : boolean = false ;
+
+  constructor(private service : SearchspService, private formBuilder : FormBuilder)
   {
-    this.searchForm = fromBuilder.group({
+    this.searchForm = formBuilder.group({
       name : new FormControl('', Validators.required)
     });
+    this.advancedSearch = formBuilder.group({
+      city : new FormControl(),
+      state : new FormControl(),
+      country : new FormControl() 
+  });
   }
 
   get name()
@@ -39,5 +53,32 @@ export class SearchspComponent {
         this.status = r1.status;
       }
     );
+  }
+
+  toShowTableAdSearch()
+  {
+    this.advancedSearchFormStatus = true ;
+    this.basicSearchFormStatus = false;
+    this.basicTableshow = false;
+  }
+
+  toShowTableBaSearch()
+  {
+    this.basicSearchFormStatus = true;
+    this.advancedSearchFormStatus = false ;
+  }
+
+  toShowBasicTable()
+  {
+    this.basicTableshow = true;
+  }
+  searchAdvanced()
+  { 
+    console.log(this.advancedSearch);
+    this.service.searchAdvanced(this.advancedSearch).subscribe(r1 => {
+                                                                        this.advancedSearchResults = r1.pools ;
+                                                                        this.statusAdvanced = r1.status ;
+                                                                        this.messageAdvanced = r1.message ;
+                                                                      });
   }
 }

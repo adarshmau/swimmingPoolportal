@@ -1,5 +1,5 @@
-
-<form [formGroup]="searchForm" (ngSubmit)="save()">
+<button (click)="toShowTableBaSearch()" class="btn btn-primary">Basic Search</button>
+<form [formGroup]="searchForm" (ngSubmit)="save()"  *ngIf="basicSearchFormStatus == true">
     <div class="form-group">
         <label for="name">Name of Swimming Pool</label>
         <input type="text" formControlName="name" class="form-control" id="name">
@@ -8,21 +8,66 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" (click)="toShowBasicTable()">
         <input type="submit" value="submit">
+    </div>
+
+    <div style="color: lightgreen;" *ngIf="status == true">
+        {{ message }}
+    </div>
+    
+    <div style="color: red;" *ngIf="status == false">
+        {{ message }}
+    </div>
+
+    <div *ngIf="basicTableshow == true">
+        <table border="1" class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Plot No</th>
+                <th scope="col">Street Name</th>
+                <th scope="col">Area Name</th>
+                <th scope="col">City</th>
+                <th scope="col">State</th>
+                <th scope="col">Country</th>
+                <th scope="col">Pincode</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let s of searchList">
+                <td>{{s.title}}</td>
+                <td>{{s.plotNo}}</td>
+                <td>{{s.streetName}}</td>
+                <td>{{s.areaName}}</td>
+                <td>{{s.city}}</td>
+                <td>{{s.state}}</td>
+                <td>{{s.country}}</td>
+                <td>{{s.pinCode}}</td>
+              </tr>
+            </tbody>
+          </table>
     </div>
 </form>
 
-<div style="color: lightgreen;" *ngIf="status == true">
-    {{ message }}
+<br>
+
+<!-- aAdvanced Search -->
+<button (click)="toShowTableAdSearch()" class="btn btn-primary">Advanced Search</button>
+
+<div *ngIf="advancedSearchFormStatus == true" >
+  <form [formGroup]="advancedSearch" (ngSubmit)="searchAdvanced()" class="form-group">
+    City : <input type="text" formControlName="city" id="city" class="form-control" >
+    State : <input type="text" formControlName="state" id="state" class="form-control">
+    Country : <input type="text" formControlName="country" id="country" class="form-control">
+    
+    <input type="submit" id="submit" class="btn btn-primary">
+  </form>
 </div>
 
-<div style="color: red;" *ngIf="status == false">
-    {{ message }}
-</div>
-
-<div>
-    <table border="1" class="table">
+{{messageAdvanced}}
+<div *ngIf="statusAdvanced == true">
+    <table class="table">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Title</th>
@@ -36,26 +81,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let s of searchList">
-            <td>{{s.title}}</td>
-            <td>{{s.plotNo}}</td>
-            <td>{{s.streetName}}</td>
-            <td>{{s.areaName}}</td>
-            <td>{{s.city}}</td>
-            <td>{{s.state}}</td>
-            <td>{{s.country}}</td>
-            <td>{{s.pinCode}}</td>
+          <tr *ngFor="let a of advancedSearchResults">
+            <td>{{a.title}}</td>
+            <td>{{a.plotNo}}</td>
+            <td>{{a.streetName}}</td>
+            <td>{{a.areaName}}</td>
+            <td>{{a.city}}</td>
+            <td>{{a.state}}</td>
+            <td>{{a.country}}</td>
+            <td>{{a.pinCode}}</td>
           </tr>
         </tbody>
       </table>
-    <!-- <div *ngFor="let sl of searchList">
-        Title :   {{ sl.title }}
-        Country :  {{ sl.country }}
-        State :  {{ sl.state }}
-        Area Name : {{ sl.areaName }}
-        PinCode :  {{ sl.pinCode }}
-        Plot No. : {{ sl.plotNo }}
-        City :  {{ sl.city }}
-        Street Name : {{ sl.streetName }}
-    </div> -->
 </div>

@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SwimmingPoolDTO {
+public class SwimmingPoolBasicSearchDTO {
 	private boolean status;
 	private String message;
 	

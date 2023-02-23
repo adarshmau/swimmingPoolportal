@@ -10,5 +10,6 @@ public interface SwimmingPoolRepository extends CrudRepository<SwimmingPool , In
 	
 	public Iterable<SwimmingPool> findAllByTitleLike(String title) ;
 	public Iterable<SwimmingPool> findByOwner(Owner owner);
+	public Iterable<SwimmingPool> findAllByCityLikeAndStateLikeAndCountryLike(String city , String state , String country) ;
 	
 }
