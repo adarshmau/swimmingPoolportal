@@ -4,15 +4,15 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ListspService {
-
+export class ListspService 
+{
   url : string = 'http://localhost:9090/swimmingPool';
 
   constructor(private httpClient : HttpClient) { }
 
-  list()
+  list(username:any)
   {
-    return this.httpClient.get<any>(this.url+'/list') ;
+    return this.httpClient.get<any>(this.url+'/list/'+username) ;
   }
 
   findPool(id : any)

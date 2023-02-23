@@ -32,13 +32,20 @@ public class SwimmingPoolService {
 		return swimmingPoolRepository.save(swimmingPool) ;
 	}
 	
-	public Iterable<SwimmingPool> load()
+	public Iterable<SwimmingPool> load(String username)
 	{
-		return swimmingPoolRepository.findAll() ;
+		AppUser appUser = appUserRepository.findByEmail(username) ;	
+		Owner owner = ownerRepository.findByAppUser(appUser);
+		return swimmingPoolRepository.findByOwner(owner) ;
 	}
 	
 	public Optional<SwimmingPool> findPool(Integer id)
 	{
 		return swimmingPoolRepository.findById(id) ;
+	}
+	
+	public SwimmingPool findByTitle(String title)
+	{
+		return swimmingPoolRepository.findByTitle(title);
 	}
 }

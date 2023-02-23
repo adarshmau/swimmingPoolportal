@@ -29,10 +29,10 @@ public class SwimmingPoolController {
 		return ResponseEntity.ok(swimmingPoolService.save(swimmingPool)) ;
 	}
 	
-	@GetMapping("list")
-	public ResponseEntity<Iterable<SwimmingPool>> load()
+	@GetMapping("list/{username}")
+	public ResponseEntity<Iterable<SwimmingPool>> load(@PathVariable String username)
 	{
-		return ResponseEntity.ok(swimmingPoolService.load()) ;
+		return ResponseEntity.ok(swimmingPoolService.load(username)) ;
 	}	
 	
 	@GetMapping("findPool/{id}")
@@ -45,5 +45,11 @@ public class SwimmingPoolController {
 	public ResponseEntity<SwimmingPool> update(@RequestBody SwimmingPool swimmingPool)
 	{
 		return ResponseEntity.ok(swimmingPoolService.save(swimmingPool));
+	}
+	
+	@GetMapping("findPoolByName/{name}")
+	public ResponseEntity<SwimmingPool> findPoolByName(@PathVariable String name)
+	{
+		return ResponseEntity.ok(swimmingPoolService.findByTitle(name)) ;
 	}
 }

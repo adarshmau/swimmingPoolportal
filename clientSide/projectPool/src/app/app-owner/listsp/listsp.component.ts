@@ -34,7 +34,9 @@ export class ListspComponent {
 
   ngOnInit()
   {
-    this.service.list().subscribe( r1 => { this.swimmingPools = r1});
+    var email = sessionStorage.getItem('username');
+
+    this.service.list(email).subscribe( r1 => { this.swimmingPools = r1});
   }
 
   edit(id : any)
