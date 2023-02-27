@@ -32,6 +32,7 @@
                 <th scope="col">State</th>
                 <th scope="col">Country</th>
                 <th scope="col">Pincode</th>
+                <th scope="col">Book your Sp</th>
               </tr>
             </thead>
             <tbody>
@@ -44,6 +45,7 @@
                 <td>{{s.state}}</td>
                 <td>{{s.country}}</td>
                 <td>{{s.pinCode}}</td>
+                <button (click)="bookClicked(s.id)" >Book your SP</button>
               </tr>
             </tbody>
           </table>
@@ -78,6 +80,7 @@
             <th scope="col">State</th>
             <th scope="col">Country</th>
             <th scope="col">Pincode</th>
+            <th scope="col">Book your SP</th>
           </tr>
         </thead>
         <tbody>
@@ -90,7 +93,18 @@
             <td>{{a.state}}</td>
             <td>{{a.country}}</td>
             <td>{{a.pinCode}}</td>
+            <button (click)="bookClicked(a.id)" >Book your SP</button>
           </tr>
         </tbody>
       </table>
+</div>
+
+{{bookingMessage}}
+<div *ngIf="bookingFormStatus" >
+  <form [formGroup]="book" (ngSubmit)="bookSp()" class="form-group">
+    Date : <input type="date" formControlName="date" id="date" class="form-control" >
+    Time : <input type="time" formControlName="time" id="time" class="form-control" >
+    No of Person : <input type="number" formControlName="quantity" id="quantity" class="form-control">
+    <input type="submit" id="submit" class="btn btn-primary">
+  </form>
 </div>

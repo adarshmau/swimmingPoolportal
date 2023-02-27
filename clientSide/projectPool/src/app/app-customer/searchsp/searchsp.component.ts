@@ -1,3 +1,4 @@
+import { Time } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { SearchspService } from './searchsp.service';
@@ -16,6 +17,8 @@ export class SearchspComponent {
   message : string = '';
 
   status : boolean = false;
+
+  book : FormGroup;
 
   basicSearchFormStatus : boolean = false;
   basicTableshow : boolean = false;
@@ -37,6 +40,13 @@ export class SearchspComponent {
       state : new FormControl(''),
       country : new FormControl('') 
   });
+  this.book = formBuilder.group({
+    email : new FormControl(),
+    date : new FormControl(),
+    time : new FormControl(),
+    quantity : new FormControl() ,
+    poolId : new FormControl()
+});
   }
 
   get name()
@@ -88,5 +98,30 @@ export class SearchspComponent {
                                                                         this.statusAdvanced = r1.status ;
                                                                         this.messageAdvanced = r1.message ;
                                                                       });
+  }
+
+  bookingFormStatus : boolean = false ;
+  bookingStatus : boolean = false ;
+  bookingMessage : string = "" ;
+  poolId:any ;
+
+  bookClicked(id : any)
+  {
+    this.poolId = id;
+    this.bookingFormStatus = true ;
+  }
+
+  
+
+  bookSp()
+  {
+    this.book.value.email = sessionStorage.getItem('username');
+    this.book.value.poolId = this.poolId ; 
+    this.book.value.time = this.book.value.time + ":00";
+    console.log(this.book.value);
+    this.service.book(this.book).subscribe(r1 => { 
+                                                    this.bookingStatus = r1.bookingStatus;
+                                                    this.bookingMessage = r1.bookingMessage;
+                                                 });
   }
 }

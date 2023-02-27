@@ -19,4 +19,10 @@ export class SearchspService {
     return this.httpClient.post<any>(this.url+'/advancedSearch', search.value) ;
   }
   
+  book(booking : any)
+  {
+    return this.httpClient.post<any>('http://localhost:9090/booking/save', booking.value);
+  }
+
+
 }
