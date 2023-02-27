@@ -86,4 +86,9 @@ public class SwimmingPoolService {
 		}
 		return swimmingPoolDTO;
 	}
+	//for Owner listing of bookings
+//	public Iterable<SwimmingPool> loadPools(AppUser appUser)
+//	{
+//		return swimmingPoolRepository.findAllByAppUser(appUser);
+//	}
 }

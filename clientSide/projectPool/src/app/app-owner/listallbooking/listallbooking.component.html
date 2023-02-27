@@ -1,0 +1,15 @@
+<table>
+   <tr>
+        <th>Swimming Pool Name</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Quantity</th>
+   </tr>
+   <tr *ngFor="let book of bookLoad">
+   <td>{{book.swimmingPoolName}}</td>
+   <td>{{book.date}}</td>
+   <td>{{book.time}}</td>
+   <td>{{book.quantity}}</td>
+   <button (click)="delete(book.id)">Delete Booking</button>
+   </tr>
+</table>

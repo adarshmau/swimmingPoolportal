@@ -1,9 +1,12 @@
 package com.example.projectPool.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.projectPool.dto.BookingDTO;
 import com.example.projectPool.entity.AppUser;
@@ -33,10 +36,13 @@ public class BookingService {
 		Customer customer = customerService.findByAppUser(appUser);
 		Optional<SwimmingPool> sp = swimmingPoolService.findPool(bookingDTO.getPoolId());
 		SwimmingPool swimmingPool = sp.get();
+		String ownerMail = swimmingPool.getUsername();
 		Booking booking = new Booking();
 		
 		booking.setCustomer(customer);
 		booking.setSwimmingPool(swimmingPool);
+		booking.setSwimmingPoolName(swimmingPool.getTitle());
+		booking.setUserEmail(ownerMail);
 		booking.setDate(bookingDTO.getDate());
 		booking.setTime(bookingDTO.getTime());
 		booking.setQuantity(bookingDTO.getQuantity());
@@ -44,8 +50,25 @@ public class BookingService {
 		return bookingRepository.save(booking);
 	}
 	
-	public Iterable<Booking> load()
+	public Iterable<Booking> load(String email)
 	{
-		return bookingRepository.findAll();
+		List<Booking> booking = new ArrayList<>();
+		Iterable<Booking> bookings = bookingRepository.findAll();
+//		AppUser appUser = appUserService.findByEmail(email);
+//		Iterable<SwimmingPool> pools = swimmingPoolService.loadPools(appUser);
+		for(Booking book : bookings)
+		{
+			if(book.getUserEmail().equals(email))
+			{
+				booking.add(book);
+			}
+		}
+		return booking;
+	}
+	
+	public String delete(Integer id)
+	{
+		bookingRepository.deleteById(id);
+		return "Booking deleted successfully";
 	}
 }

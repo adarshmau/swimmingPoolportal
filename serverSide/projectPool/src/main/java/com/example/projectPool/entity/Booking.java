@@ -26,7 +26,8 @@ public class Booking {
 	private Date date ;
 	private Time time;
 	private int quantity;
-	
+	private String userEmail;
+	private String swimmingPoolName;	
 	@ManyToOne
 	@JsonIgnore
 	private SwimmingPool swimmingPool ;
