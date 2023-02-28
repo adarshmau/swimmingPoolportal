@@ -1,20 +1,24 @@
 {{refreshMessage}}
 <br>
 <button (click)="refresh()">Refresh</button>
-<table class="table">
-    <tr>
-        <th>Swimming Pool Name</th>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Quantity</th>
-    </tr>
-    <tr *ngFor="let l of loadCust">
-        <td>{{l.swimmingPoolName}}</td>
-        <td>{{l.date}}</td>
-        <td>{{l.time}}</td>
-        <td>{{l.quantity}}</td>
-        <button (click)="edit(l.id, l.pid)">Edit</button>
-    </tr>
+<table class="table">   
+    <thead class="thead-dark">
+        <tr>
+          <th scope="col">Swimming Pool Name</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+          <th scope="col">Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let l of loadCust">
+            <td>{{l.swimmingPoolName}}</td>
+            <td>{{l.date}}</td>
+            <td>{{l.time}}</td>
+            <td>{{l.quantity}}</td>
+            <button (click)="edit(l.id, l.pid)">Edit</button>
+        </tr>
+      </tbody>
 </table>
 
 <div style="color: lightgreen;">
