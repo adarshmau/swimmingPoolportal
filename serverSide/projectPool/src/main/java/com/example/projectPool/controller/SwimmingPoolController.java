@@ -25,36 +25,42 @@ public class SwimmingPoolController {
 	@Autowired
 	private SwimmingPoolService swimmingPoolService ;
 	
+	//-------------------------------------------------------------------------------------------------------
 	@PostMapping("save")
 	public ResponseEntity<SwimmingPool> save(@RequestBody SwimmingPool swimmingPool)
 	{
 		return ResponseEntity.ok(swimmingPoolService.save(swimmingPool)) ;
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	@GetMapping("list/{username}")
 	public ResponseEntity<Iterable<SwimmingPool>> load(@PathVariable String username)
 	{
 		return ResponseEntity.ok(swimmingPoolService.load(username)) ;
 	}	
 	
+	//-------------------------------------------------------------------------------------------------------
 	@GetMapping("findPool/{id}")
 	public ResponseEntity<Optional<SwimmingPool>> find(@PathVariable Integer id)
 	{
 		return ResponseEntity.ok(swimmingPoolService.findPool(id)) ;
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	@PostMapping("update")
 	public ResponseEntity<SwimmingPool> update(@RequestBody SwimmingPool swimmingPool)
 	{
 		return ResponseEntity.ok(swimmingPoolService.save(swimmingPool));
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	@GetMapping("findPoolByName/{name}")
 	public ResponseEntity<SwimmingPoolBasicSearchDTO> findPoolByName(@PathVariable String name)
 	{
 		return ResponseEntity.ok(swimmingPoolService.findAllByTitle(name)) ;
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	@PostMapping("advancedSearch") 
 	public ResponseEntity<SwimmingPoolBasicSearchDTO> findByAdvancedSearch(@RequestBody SwimmingPoolAdvancedSearchParametersDTO search)
 	{

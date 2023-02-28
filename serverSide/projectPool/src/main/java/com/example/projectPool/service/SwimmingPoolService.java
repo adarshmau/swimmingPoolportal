@@ -25,6 +25,7 @@ public class SwimmingPoolService {
 	@Autowired
 	private OwnerRepository ownerRepository ;
 	
+	//-------------------------------------------------------------------------------------------------------
 	public SwimmingPool save(SwimmingPool swimmingPool)
 	{
 		AppUser appUser = appUserRepository.findByEmail(swimmingPool.getUsername()) ;	
@@ -33,6 +34,7 @@ public class SwimmingPoolService {
 		return swimmingPoolRepository.save(swimmingPool) ;
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	public Iterable<SwimmingPool> load(String username)
 	{
 		AppUser appUser = appUserRepository.findByEmail(username) ;	
@@ -40,11 +42,13 @@ public class SwimmingPoolService {
 		return swimmingPoolRepository.findByOwner(owner) ;
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	public Optional<SwimmingPool> findPool(Integer id)
 	{
 		return swimmingPoolRepository.findById(id) ;
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	public SwimmingPoolBasicSearchDTO findAllByTitle(String title)
 	{
 		Iterable<SwimmingPool> pools = swimmingPoolRepository.findAllByTitleLike("%" + title+ "%");
@@ -66,6 +70,7 @@ public class SwimmingPoolService {
 		return swimmingPoolDTO;
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	public SwimmingPoolBasicSearchDTO advancedSearch(String city , String state, String country)
 	{
 		Iterable<SwimmingPool> pools = swimmingPoolRepository.findAllByCityLikeAndStateLikeAndCountryLike("%"+city+"%", "%"+state+"%", "%"+country+"%") ; 
@@ -86,9 +91,4 @@ public class SwimmingPoolService {
 		}
 		return swimmingPoolDTO;
 	}
-	//for Owner listing of bookings
-//	public Iterable<SwimmingPool> loadPools(AppUser appUser)
-//	{
-//		return swimmingPoolRepository.findAllByAppUser(appUser);
-//	}
 }

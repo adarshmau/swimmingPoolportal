@@ -24,6 +24,7 @@ public class AppUserService {
 	@Autowired
 	private OwnerService ownerService ;
 	
+	//-------------------------------------------------------------------------------------------------------
 	public AppUser save(AppUser appUser) throws Exception
 	{
 		appUserRepository.save(appUser) ;
@@ -49,21 +50,25 @@ public class AppUserService {
 		return appUser ;
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	public AppUser findByEmail(String email)
 	{
 		return appUserRepository.findByEmail(email);
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	public AppUser update(AppUser appUser)
 	{
 		return appUserRepository.save(appUser);
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	public AppUser login(LoginDTO loginDTO)
 	{
 		return appUserRepository.findByEmailAndPassword(loginDTO.getUsername(), loginDTO.getPassword());
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	public String resetPassword(String email , String activationCode , String password)
 	{
 		String message = "Activation Code is wrong " ;

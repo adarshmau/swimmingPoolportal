@@ -13,6 +13,7 @@ public class MailService {
 	@Autowired
 	private JavaMailSender javaMailSender ;
 	
+	//-------------------------------------------------------------------------------------------------------
 	public String sendEmailToVerify(String email) throws Exception
 	{
 		MimeMessage mime = javaMailSender.createMimeMessage() ;
@@ -33,6 +34,7 @@ public class MailService {
 		return activationCode ;
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	public String forgotPasswordLink(String email) throws Exception
 	{
 		MimeMessage mime = javaMailSender.createMimeMessage() ;

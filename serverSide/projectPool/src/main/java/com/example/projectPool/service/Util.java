@@ -2,6 +2,7 @@ package com.example.projectPool.service;
 
 public class Util {
 	
+	//-------------------------------------------------------------------------------------------------------
 	public static String generateActivationCode()
 	{
 		StringBuilder sb = new StringBuilder() ;

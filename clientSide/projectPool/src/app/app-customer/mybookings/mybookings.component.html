@@ -1,5 +1,7 @@
+{{refreshMessage}}
+<br>
 <button (click)="refresh()">Refresh</button>
-<table>
+<table class="table">
     <tr>
         <th>Swimming Pool Name</th>
         <th>Date</th>
@@ -15,9 +17,24 @@
     </tr>
 </table>
 
-<form [formGroup]="editBooking" *ngIf="status == true" (ngSubmit)="save()">
-    Date : <input type="date" formControlName="date" id="date"> <br>
-    Time : <input type="time" formControlName="time" id="time"> <br>
-    Quantity : <input type="number" formControlName="quantity" id="quantity"> <br>
-    <input type="submit" value="submit">
+<div style="color: lightgreen;">
+    {{message}}
+</div>
+
+<form [formGroup]="editBooking" *ngIf="status == true" (ngSubmit)="save()" class="form-group">
+    <div class="form-group">     
+        <label for="username">Date</label>
+        <input type="date"  formControlName="date" id="date" class="form-control">
+        <div *ngIf="date?.touched && date?.invalid" class="alert alert-danger">Date can't be empty</div>
+                
+        <label for="time">Time</label>
+        <input type="time" formControlName="time" id="time" class="form-control">
+        <div *ngIf="time?.touched && time?.invalid" class="alert alert-danger">Time can't be empty</div>
+                
+        <label for="quantity">Quantity</label>
+        <input type="number" formControlName="quantity" id="quantity" class="form-control">
+        <div *ngIf="quantity?.touched && quantity?.invalid" class="alert alert-danger">Time can't be empty</div>
+        <br>
+        <input type="submit" id="sumbit" class="btn btn-primary">
+    </div>
 </form>

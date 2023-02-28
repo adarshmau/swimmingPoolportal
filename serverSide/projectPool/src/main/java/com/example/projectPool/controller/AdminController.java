@@ -30,6 +30,7 @@ public class AdminController {
 	@Autowired
 	private MailService mailService ;
 	
+	//-------------------------------------------------------------------------------------------------------
 	@PostMapping("login")
 	public ResponseEntity<LoginDTO> login(@RequestBody LoginDTO loginDTO)
 	{
@@ -50,6 +51,7 @@ public class AdminController {
 		return ResponseEntity.ok(loginDTO);
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	@PostMapping("changePassword")
 	public ResponseEntity<ChangePasswordDTO> changePassword(@RequestBody ChangePasswordDTO changePasswordDTO)
 	{
@@ -67,6 +69,7 @@ public class AdminController {
 		return ResponseEntity.ok(changePasswordDTO);
 	}	
 	
+	//-------------------------------------------------------------------------------------------------------
 	@PostMapping("forgotPassword")
 	public ResponseEntity<ForgotPasswordDTO> forgotPassword(@RequestBody ForgotPasswordDTO forgotPasswordDTO) throws Exception
 	{		
@@ -89,6 +92,7 @@ public class AdminController {
 		return ResponseEntity.ok(forgotPasswordDTO) ;
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	@PostMapping("passwordReset")                 
 	public ResponseEntity<PasswordResetSuccessDTO> resetPassword(@RequestBody ResetPasswordDTO resetPasswordDTO)
 	{	
@@ -99,13 +103,14 @@ public class AdminController {
 		return ResponseEntity.ok(passwordResetSuccessDTO);
 	}
 	
-	
+	//-------------------------------------------------------------------------------------------------------
 	@GetMapping("myprofile/read/{email}")
 	public ResponseEntity<AppUser> read(@PathVariable String email)
 	{
 		return ResponseEntity.ok(appUserService.findByEmail(email)) ;
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	@PostMapping("myprofile/save")
 	public ResponseEntity<AppUser> saveAppUser(@RequestBody AppUser appUser)
 	{

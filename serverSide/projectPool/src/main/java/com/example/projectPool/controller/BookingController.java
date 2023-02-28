@@ -25,50 +25,42 @@ public class BookingController {
 
 	@Autowired
 	private BookingService bookingService;;
-
+	//-------------------------------------------------------------------------------------------------------
+	
 	@PostMapping("save")
 	public ResponseEntity<Booking> save(@RequestBody BookingDTO bookingDTO)
 	{
 		return ResponseEntity.ok(bookingService.save(bookingDTO));
 	}
-
+	//-------------------------------------------------------------------------------------------------------
 	//LOAD ALL THE bookings for owner
 	@GetMapping("load/{email}")
 	public ResponseEntity<Iterable<Booking>> load(@PathVariable String email)
 	{
 		return ResponseEntity.ok(bookingService.load(email));
 	}
-
+	//-------------------------------------------------------------------------------------------------------
+	// deleting all the bookings
 	@DeleteMapping("delete/{id}")
 	public ResponseEntity<DeletedBookingDTO> delete(@PathVariable Integer id)
 	{
-		DeletedBookingDTO deletedBookingDTO = new DeletedBookingDTO();
-		deletedBookingDTO.setMessage("Booking not deleted.");
-		deletedBookingDTO.setStatus(false);
-		String s = bookingService.delete(id);
-		if(s.equals("Booking deleted successfully"))
-		{
-			deletedBookingDTO.setMessage("Booking deleted successfully");
-			deletedBookingDTO.setStatus(true);
-		}
-
-		return ResponseEntity.ok(deletedBookingDTO);
+		return ResponseEntity.ok(bookingService.delete(id));
 	}
-	
+	//-------------------------------------------------------------------------------------------------------
 	//loading pools for customer
 	@GetMapping("loadCustBooking/{email}")
 	public ResponseEntity<Iterable<Booking>> loadCustBooking(@PathVariable String email)
 	{
 		return ResponseEntity.ok(bookingService.loadCustBooking(email));
 	}
-	
+	//-------------------------------------------------------------------------------------------------------
 	//find pool by by id
 	@GetMapping("findBooking/{id}")
 	public ResponseEntity<Optional<Booking>> findBooking(@PathVariable Integer id)
 	{
 		return ResponseEntity.ok(bookingService.findBooking(id));
 	}
-	
+	//-------------------------------------------------------------------------------------------------------
 	//updating the booking
 	@PostMapping("update")
 	public ResponseEntity<Booking> update(@RequestBody BookingDTO bookingDTO)

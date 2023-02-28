@@ -27,9 +27,8 @@ public class AppUserController {
 	{
 		return ResponseEntity.ok(appUserService.save(appUser)) ;
 	}
-	
-//  http://localhost:9090/verification/email/singhlovish803@gmail.com/activationCode/1VTOvOVMEY24P1cy6PYK7F7qNiCbd6
-	
+
+	//-------------------------------------------------------------------------------------------------------
 	@GetMapping("/verification/email/{email}/activationCode/{activationCode}")
 	public ResponseEntity<String> verifyEmail(@PathVariable String email , @PathVariable String activationCode )
 	{

@@ -111,7 +111,7 @@ export class SearchspComponent {
     this.bookingFormStatus = true ;
   }
 
-  
+  // bookinStatus : boolean = false;
 
   bookSp()
   {
@@ -120,8 +120,8 @@ export class SearchspComponent {
     this.book.value.time = this.book.value.time + ':00';
     console.log(this.book.value);
     this.service.book(this.book).subscribe(r1 => { 
-                                                    this.bookingStatus = r1.bookingStatus;
-                                                    this.bookingMessage = r1.bookingMessage;
+                                                    this.bookingFormStatus = false;
+                                                    this.bookingMessage = "Booked Successfully";
                                                  });
   }
 }

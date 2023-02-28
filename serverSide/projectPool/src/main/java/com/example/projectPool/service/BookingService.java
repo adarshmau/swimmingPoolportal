@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.projectPool.dto.BookingDTO;
+import com.example.projectPool.dto.DeletedBookingDTO;
 import com.example.projectPool.entity.AppUser;
 import com.example.projectPool.entity.Booking;
 import com.example.projectPool.entity.Customer;
@@ -20,16 +21,16 @@ public class BookingService {
 
 	@Autowired
 	private BookingRepository bookingRepository;
-	
+
 	@Autowired
 	private AppUserService appUserService;
-	
+
 	@Autowired
 	private CustomerService customerService;
-	
+
 	@Autowired
 	private SwimmingPoolService swimmingPoolService;
-	
+	//-------------------------------------------------------------------------------------------------------
 	public Booking save(BookingDTO bookingDTO)
 	{
 		AppUser appUser = appUserService.findByEmail(bookingDTO.getEmail());
@@ -38,7 +39,7 @@ public class BookingService {
 		SwimmingPool swimmingPool = sp.get();
 		String ownerMail = swimmingPool.getUsername();
 		Booking booking = new Booking();
-		
+
 		booking.setPid(bookingDTO.getPoolId());
 		booking.setCustomer(customer);
 		booking.setSwimmingPool(swimmingPool);
@@ -48,16 +49,14 @@ public class BookingService {
 		booking.setDate(bookingDTO.getDate());
 		booking.setTime(bookingDTO.getTime());
 		booking.setQuantity(bookingDTO.getQuantity());
-		
+
 		return bookingRepository.save(booking);
 	}
-	
+	//-------------------------------------------------------------------------------------------------------
 	public Iterable<Booking> load(String email)
 	{
 		List<Booking> booking = new ArrayList<>();
 		Iterable<Booking> bookings = bookingRepository.findAll();
-//		AppUser appUser = appUserService.findByEmail(email);
-//		Iterable<SwimmingPool> pools = swimmingPoolService.loadPools(appUser);
 		for(Booking book : bookings)
 		{
 			if(book.getUserEmail().equals(email))
@@ -67,14 +66,18 @@ public class BookingService {
 		}
 		return booking;
 	}
-	
-	public String delete(Integer id)
+
+	//-------------------------------------------------------------------------------------------------------
+	public DeletedBookingDTO delete(Integer id)
 	{
+		DeletedBookingDTO deletedBookingDTO = new DeletedBookingDTO();
+		deletedBookingDTO.setMessage("Booking deleted successfully");
+		deletedBookingDTO.setStatus(true);
 		bookingRepository.deleteById(id);
-		return "Booking deleted successfully";
+		return deletedBookingDTO ;
 	}
-	
-	// listing all the bookings for cutomer side.
+	//-------------------------------------------------------------------------------------------------------
+	// listing all the bookings for customer side.
 	public Iterable<Booking> loadCustBooking(String email)
 	{
 		List<Booking> booking = new ArrayList<>();
@@ -88,12 +91,14 @@ public class BookingService {
 		}
 		return booking;
 	}
+	//-------------------------------------------------------------------------------------------------------
 	//find booking by id
 	public Optional<Booking> findBooking(Integer id)
 	{
 		return bookingRepository.findById(id);
 	}
 
+	//-------------------------------------------------------------------------------------------------------
 	public Booking update(BookingDTO bookingDTO) {
 		AppUser appUser = appUserService.findByEmail(bookingDTO.getEmail());
 		Customer customer = customerService.findByAppUser(appUser);
@@ -101,7 +106,7 @@ public class BookingService {
 		SwimmingPool swimmingPool = sp.get();
 		String ownerMail = swimmingPool.getUsername();
 		Booking booking = new Booking();
-		
+
 		booking.setPid(bookingDTO.getId());
 		booking.setId(bookingDTO.getId());
 		booking.setCustomer(customer);
@@ -112,7 +117,7 @@ public class BookingService {
 		booking.setDate(bookingDTO.getDate());
 		booking.setTime(bookingDTO.getTime());
 		booking.setQuantity(bookingDTO.getQuantity());
-		
+
 		return bookingRepository.save(booking);
 	}
 }

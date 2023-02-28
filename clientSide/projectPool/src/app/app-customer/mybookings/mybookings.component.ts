@@ -17,6 +17,7 @@ export class MybookingsComponent {
 
   message : string = '';
 
+  refreshMessage : string = 'Please click refresh to load Bookings';
 
   constructor(private service : MybookingsService, private fromBuilder : FormBuilder)
   {
@@ -30,17 +31,13 @@ export class MybookingsComponent {
     });
   }
 
-  // ngOnInit()
-  // {
-  //   this.loadCustBooking();
-  // }
-
   refresh()
   {
     this.loadCustBooking();
   }
   loadCustBooking()
   {
+    this.refreshMessage = '';
     var email : string = '' + sessionStorage.getItem('username');
     this.service.doLoadCustBooking(email).subscribe(r1 =>
       {
@@ -66,6 +63,8 @@ export class MybookingsComponent {
 
   save()
   {
+    this.status = false;
+    this.message = "Booking deleted successfully";
     this.editBooking.value.email = sessionStorage.getItem('username');
     this.editBooking.value.poolId = this.poolId ; 
     this.editBooking.value.id = this.bookingId;
@@ -77,7 +76,20 @@ export class MybookingsComponent {
     }
     this.service.doUpdate(this.editBooking).subscribe(r1 =>{
       console.log(r1);
-      this.message = "Booking Changes Successfully";
+      this.message = "Booking Changed Successfully. Please reload the Page or click Refresh button above to refresh the Booking List";
     });
+  }
+
+  get time()
+  {
+    return this.editBooking.get('time');
+  }
+  get date()
+  {
+    return this.editBooking.get('date');
+  }
+  get quantity()
+  {
+    return this.editBooking.get('quantity');
   }
 }

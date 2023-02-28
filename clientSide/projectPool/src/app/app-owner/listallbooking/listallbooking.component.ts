@@ -31,6 +31,7 @@ export class ListallbookingComponent {
   {
     this.service.doLoad(this.email).subscribe(r1 =>{
       this.bookLoad = r1;
+      this.deletedMessage = '';
     });
   }
 
@@ -39,7 +40,7 @@ export class ListallbookingComponent {
   delete(id : any)
   {
     this.service.doDelete(id).subscribe(r1=>{
-      this.deletedMessage = r1;
+      this.deletedMessage = "Booking deleted successfully";
     });
     this.load();
   }

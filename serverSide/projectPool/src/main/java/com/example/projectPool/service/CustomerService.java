@@ -13,11 +13,13 @@ public class CustomerService {
 	@Autowired
 	private CustomerRepostitory customerRepostitory ;
 	
+	//-------------------------------------------------------------------------------------------------------
 	public Customer save(Customer customer)
 	{
 		return customerRepostitory.save(customer);
 	}
 	
+	//-------------------------------------------------------------------------------------------------------
 	public Customer findByAppUser(AppUser appUser)
 	{
 		return customerRepostitory.findByAppUser(appUser);
