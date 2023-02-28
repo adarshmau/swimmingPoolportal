@@ -39,10 +39,12 @@ public class BookingService {
 		String ownerMail = swimmingPool.getUsername();
 		Booking booking = new Booking();
 		
+		booking.setPid(bookingDTO.getPoolId());
 		booking.setCustomer(customer);
 		booking.setSwimmingPool(swimmingPool);
 		booking.setSwimmingPoolName(swimmingPool.getTitle());
 		booking.setUserEmail(ownerMail);
+		booking.setCustEmail(bookingDTO.getEmail());
 		booking.setDate(bookingDTO.getDate());
 		booking.setTime(bookingDTO.getTime());
 		booking.setQuantity(bookingDTO.getQuantity());
@@ -70,5 +72,47 @@ public class BookingService {
 	{
 		bookingRepository.deleteById(id);
 		return "Booking deleted successfully";
+	}
+	
+	// listing all the bookings for cutomer side.
+	public Iterable<Booking> loadCustBooking(String email)
+	{
+		List<Booking> booking = new ArrayList<>();
+		Iterable<Booking> bookings = bookingRepository.findAll();
+		for(Booking book : bookings)
+		{
+			if(book.getCustEmail().equals(email))
+			{
+				booking.add(book);
+			}
+		}
+		return booking;
+	}
+	//find booking by id
+	public Optional<Booking> findBooking(Integer id)
+	{
+		return bookingRepository.findById(id);
+	}
+
+	public Booking update(BookingDTO bookingDTO) {
+		AppUser appUser = appUserService.findByEmail(bookingDTO.getEmail());
+		Customer customer = customerService.findByAppUser(appUser);
+		Optional<SwimmingPool> sp = swimmingPoolService.findPool(bookingDTO.getPoolId());
+		SwimmingPool swimmingPool = sp.get();
+		String ownerMail = swimmingPool.getUsername();
+		Booking booking = new Booking();
+		
+		booking.setPid(bookingDTO.getId());
+		booking.setId(bookingDTO.getId());
+		booking.setCustomer(customer);
+		booking.setSwimmingPool(swimmingPool);
+		booking.setSwimmingPoolName(swimmingPool.getTitle());
+		booking.setUserEmail(ownerMail);
+		booking.setCustEmail(bookingDTO.getEmail());
+		booking.setDate(bookingDTO.getDate());
+		booking.setTime(bookingDTO.getTime());
+		booking.setQuantity(bookingDTO.getQuantity());
+		
+		return bookingRepository.save(booking);
 	}
 }

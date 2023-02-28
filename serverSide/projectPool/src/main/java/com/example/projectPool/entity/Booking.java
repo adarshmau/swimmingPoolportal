@@ -27,7 +27,9 @@ public class Booking {
 	private Time time;
 	private int quantity;
 	private String userEmail;
+	private String custEmail;
 	private String swimmingPoolName;	
+	private Integer pid;
 	@ManyToOne
 	@JsonIgnore
 	private SwimmingPool swimmingPool ;

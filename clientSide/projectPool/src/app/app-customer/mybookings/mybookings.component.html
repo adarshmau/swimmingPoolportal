@@ -1,1 +1,23 @@
-<p>mybookings works!</p>
+<button (click)="refresh()">Refresh</button>
+<table>
+    <tr>
+        <th>Swimming Pool Name</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Quantity</th>
+    </tr>
+    <tr *ngFor="let l of loadCust">
+        <td>{{l.swimmingPoolName}}</td>
+        <td>{{l.date}}</td>
+        <td>{{l.time}}</td>
+        <td>{{l.quantity}}</td>
+        <button (click)="edit(l.id, l.pid)">Edit</button>
+    </tr>
+</table>
+
+<form [formGroup]="editBooking" *ngIf="status == true" (ngSubmit)="save()">
+    Date : <input type="date" formControlName="date" id="date"> <br>
+    Time : <input type="time" formControlName="time" id="time"> <br>
+    Quantity : <input type="number" formControlName="quantity" id="quantity"> <br>
+    <input type="submit" value="submit">
+</form>

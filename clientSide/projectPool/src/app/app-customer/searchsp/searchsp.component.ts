@@ -117,7 +117,7 @@ export class SearchspComponent {
   {
     this.book.value.email = sessionStorage.getItem('username');
     this.book.value.poolId = this.poolId ; 
-    this.book.value.time = this.book.value.time + ":00";
+    this.book.value.time = this.book.value.time + ':00';
     console.log(this.book.value);
     this.service.book(this.book).subscribe(r1 => { 
                                                     this.bookingStatus = r1.bookingStatus;

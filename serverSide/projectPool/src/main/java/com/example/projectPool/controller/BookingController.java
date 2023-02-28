@@ -1,5 +1,7 @@
 package com.example.projectPool.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -51,6 +53,26 @@ public class BookingController {
 		}
 
 		return ResponseEntity.ok(deletedBookingDTO);
-
+	}
+	
+	//loading pools for customer
+	@GetMapping("loadCustBooking/{email}")
+	public ResponseEntity<Iterable<Booking>> loadCustBooking(@PathVariable String email)
+	{
+		return ResponseEntity.ok(bookingService.loadCustBooking(email));
+	}
+	
+	//find pool by by id
+	@GetMapping("findBooking/{id}")
+	public ResponseEntity<Optional<Booking>> findBooking(@PathVariable Integer id)
+	{
+		return ResponseEntity.ok(bookingService.findBooking(id));
+	}
+	
+	//updating the booking
+	@PostMapping("update")
+	public ResponseEntity<Booking> update(@RequestBody BookingDTO bookingDTO)
+	{
+		return ResponseEntity.ok(bookingService.update(bookingDTO));
 	}
 }

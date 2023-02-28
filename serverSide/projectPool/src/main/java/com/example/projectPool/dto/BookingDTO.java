@@ -19,5 +19,6 @@ public class BookingDTO {
 	private Integer quantity;
 	private Integer poolId;
 	private Time time;
+	private Integer id;
 	
 }

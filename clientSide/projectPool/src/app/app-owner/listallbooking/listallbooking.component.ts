@@ -22,6 +22,11 @@ export class ListallbookingComponent {
     this.load();
   }
 
+  pageLoader()
+  {
+    this.load();
+  }
+
   load()
   {
     this.service.doLoad(this.email).subscribe(r1 =>{
