@@ -1,0 +1,23 @@
+.form{
+    text-align: center;
+    position:relative; 
+    
+}
+
+.align{
+    width: 75%;
+    padding: 42px 20px;
+    position: center;
+
+}
+
+.bg-img {
+
+    background-image: url("c.jpg");
+    min-height: 1000px;
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     position: relative; 
+  }

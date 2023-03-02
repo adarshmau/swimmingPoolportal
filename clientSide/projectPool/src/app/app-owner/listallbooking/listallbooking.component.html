@@ -1,24 +1,44 @@
+<<<<<<< HEAD
+<div class="row" class="bg-img">
+    <div class="col-10 offset-1 col-lg-8 offset-lg-2 div-wrapper d-flex justify-content-center align-items-center">
+        <div class="align">
+<form>
+=======
 
 <div class="row" class="bg-img">
    <div class="col-10 offset-1 col-lg-8 offset-lg-2 div-wrapper d-flex justify-content-center align-items-center">
        <div class="align">
 <div>
+>>>>>>> 3609e6b0e7f962898965cefbefbe03483cfe8e1d
 
 <div style="color: rgb(44, 13, 220);"> Please refresh the page or click refresh button below to update the booking list</div>
-<button (click)="load()">Refresh</button>
-<table>
+<button (click)="load()">Refresh</button><br><br><br>
+<table border="3px">
    <tr>
-        <th>Swimming Pool Name</th>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Quantity</th>
+       <th>Swimming Pool Name</th>&NonBreakingSpace;
+
+       <th>Date</th>&NonBreakingSpace;
+       <th>Time</th>&NonBreakingSpace;
+       <th>Quantity</th>&NonBreakingSpace;
+       
+       
+        
    </tr>
    <tr *ngFor="let book of bookLoad">
-   <td>{{book.swimmingPoolName}}</td>
-   <td>{{book.date}}</td>
-   <td>{{book.time}}</td>
-   <td>{{book.quantity}}</td>
-   <button (click)="delete(book.id)">Delete Booking</button>
+   <td>{{book.swimmingPoolName}}</td>&NonBreakingSpace;
+   <td>{{book.date}}</td>&NonBreakingSpace;
+   <td>{{book.time}}</td>&NonBreakingSpace;
+   <td>{{book.quantity}}</td>&NonBreakingSpace;&nbsp;&nbsp;&nbsp;
+   <button (click)="delete(book.id)">Cancel Booking</button>
    </tr>
 </table>
+<<<<<<< HEAD
+<div style="color: rgb(151, 94, 94);">{{deletedMessage}}</div>
+
+</form>
+</div>
+</div>
+</div>
+=======
 <div style="color: red;">{{deletedMessage}}</div>
+>>>>>>> 3609e6b0e7f962898965cefbefbe03483cfe8e1d

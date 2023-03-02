@@ -1,4 +1,16 @@
 .table{
+<<<<<<< HEAD
+    text-align: center;
+    position:relative; 
+    
+}
+
+.align{
+    /* position: sticky; */
+    width: 75%;
+    padding: 40px 20px;
+    position: center;
+=======
   text-align: center;
   position:relative; 
   
@@ -9,11 +21,23 @@
   width: 75%;
   padding: 40px 20px;
   position: center;
+>>>>>>> 3609e6b0e7f962898965cefbefbe03483cfe8e1d
 
 }
 
 .bg-img {
 
+<<<<<<< HEAD
+  background-image: url("e.jpg"); 
+  /* background-color: rgb(94, 94, 211); */
+    min-height: 1000px;
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     position: relative; 
+  }
+=======
  background-image: url("d7.jpg"); 
 /* background-color: rgb(211, 94, 100); */
   min-height: 1000px;
@@ -23,3 +47,4 @@
   background-size: cover;
    position: relative; 
 }
+>>>>>>> 3609e6b0e7f962898965cefbefbe03483cfe8e1d

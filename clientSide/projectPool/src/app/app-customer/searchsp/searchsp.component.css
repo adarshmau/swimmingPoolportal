@@ -1,0 +1,18 @@
+.align {
+    width: 75%;
+    padding: 40px 0px;
+}
+.bg-img {
+
+    background-image: url("sp.jpg");
+  
+    min-height: 600px;
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+  }
