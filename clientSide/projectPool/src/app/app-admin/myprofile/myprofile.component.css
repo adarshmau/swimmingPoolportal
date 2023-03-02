@@ -1,0 +1,24 @@
+.form{
+    text-align: center;
+    position:relative; 
+    
+}
+
+.align{
+    width: 75%;
+    padding: 42px 20px;
+    position: center;
+
+}
+
+.bg-img {
+
+     background-image: url("d.jpg"); 
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),url("../images/LandingPage/background-d.jpeg") ; */
+    min-height: 1000px;
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     position: relative; 
+  }
