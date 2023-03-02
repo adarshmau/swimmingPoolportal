@@ -2,13 +2,20 @@
     text-align: center;
     position:relative; 
     
+<<<<<<< HEAD
 }
 
 .align{
+=======
+  }
+  
+  .align{
+>>>>>>> 3609e6b0e7f962898965cefbefbe03483cfe8e1d
     /* position: sticky; */
     width: 75%;
     padding: 40px 20px;
     position: center;
+<<<<<<< HEAD
 
 }
 
@@ -16,6 +23,15 @@
 
     background-image: url("aa.jpg");
   /* background-color: rgb(94, 94, 211); */
+=======
+  
+  }
+  
+  .bg-img {
+  
+   background-image: url("lb.jpg"); 
+  /* background-color: rgb(94, 148, 211); */
+>>>>>>> 3609e6b0e7f962898965cefbefbe03483cfe8e1d
     min-height: 1000px;
   
     background-position: center;

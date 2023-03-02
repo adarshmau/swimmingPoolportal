@@ -1,0 +1,25 @@
+.table{
+    text-align: center;
+    position:relative; 
+    
+  }
+  
+  .align{
+    /* position: sticky; */
+    width: 75%;
+    padding: 40px 20px;
+    position: center;
+  
+  }
+  
+  .bg-img {
+  
+   background-image: url("as.jpg"); 
+  
+    min-height: 1000px;
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     position: relative; 
+  }

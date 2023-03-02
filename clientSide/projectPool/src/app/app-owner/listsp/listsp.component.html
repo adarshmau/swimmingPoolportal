@@ -1,10 +1,21 @@
+<<<<<<< HEAD
 <div class="row" class="bg-img">
     <div class="col-10 offset-1 col-lg-8 offset-lg-2 div-wrapper d-flex justify-content-center align-items-center">
         <div class="align">
 
 
 
+=======
+
+
+
+<div class="row" class="bg-img">
+    <div class="col-10 offset-1 col-lg-8 offset-lg-2 div-wrapper d-flex justify-content-center align-items-center">
+        <div class="align">
+<div>
+>>>>>>> 3609e6b0e7f962898965cefbefbe03483cfe8e1d
 <table border="1">
+    
     <tr>
         <th>Title</th>
         <th>Plot No</th>
@@ -15,7 +26,6 @@
         <th>Country</th>
         <th>Pin Code</th>
     </tr>
-
    <tr *ngFor="let sp of swimmingPools" >
     <td>{{sp.title}}</td>
     <td>{{sp.plotNo}}</td>
@@ -29,7 +39,9 @@
    </tr>
 </table>
 
-<div>
+
+
+
     {{message}}
 <form [formGroup]="editPool" (ngSubmit)="save()" *ngIf="status == true">
     <div class="form-group">    
@@ -67,6 +79,7 @@
         <label for="pinCode">Pin Code : </label>
         <input type="pinCode" formControlName="pinCode" class="form-control" id="pinCode">
     </div>
+    
    
     <div class="form-group">    
         <input type="submit" value="submit" class="btn btn-primary">
