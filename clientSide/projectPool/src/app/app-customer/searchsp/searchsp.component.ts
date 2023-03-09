@@ -6,7 +6,8 @@ import { SearchspService } from './searchsp.service';
 @Component({
   selector: 'app-searchsp',
   templateUrl: './searchsp.component.html',
-  styleUrls: ['./searchsp.component.css']
+  styleUrls: ['./searchsp.component.css'],
+  preserveWhitespaces: true
 })
 export class SearchspComponent {
 
